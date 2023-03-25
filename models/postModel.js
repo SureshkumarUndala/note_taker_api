@@ -1,8 +1,10 @@
 const mongoose = require("mongoose")
 const Schema  = mongoose.Schema
+
 const ObjectId = mongoose.Schema.ObjectId
 
-const postSchema = new mongoose.Schema({
+
+const postSchema = mongoose.Schema({
     title:{
         type:String,
         required: true
@@ -14,8 +16,10 @@ const postSchema = new mongoose.Schema({
     },
     author:{
         type:ObjectId,
-        ref: "userModel"
+        ref:"UserModel"
+     
     }
+ 
     
 
    

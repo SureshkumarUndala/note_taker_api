@@ -2,7 +2,7 @@ const express = require("express")
 const router = express.Router()
 const Usermodel = require("../models/userModel")
 const PostModel = require("../models/postModel")
-const { body, validationResult, Result } = require('express-validator')
+
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 const jwtsecretkey = "sgnj354748#$%^&*eneekem"
@@ -15,7 +15,7 @@ router.post("/login", async (req, res) => {
         return res.status(400).json({ error: "email and password mandatory" })
     }
     let user = await Usermodel.find({ email: email })
-    console.log(user[0].password)
+    console.log(user)
 
     if (!user) {  // if user not found
         return res.status(400).json({ error: "user does not exist" })
