@@ -46,5 +46,27 @@ router.get("/mynotes", async(req,res)=>{
 
     })
 
+    router.delete("/deleteall", async(req,res)=>{
+
+        const {title, description} = req.body
+        try{
+            const deleteallposts = await PostModel.deleteMany({author:req.user})
+            console.log(deleteallposts)
+
+
+            return res.status(200).json({
+                status:"all posts deleted"
+            })
+        }
+        catch(err){
+            res.status(500).json({
+                error:err
+            })
+        }
+    
+
+
+    })
+
 
  module.exports = router
